@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <experimental/filesystem>
+#include <dirent.h>
 
 room& file_reader::read_room(room& room_read, std::string file_name)
 {
@@ -39,15 +39,25 @@ room& file_reader::read_room(room& room_read, std::string file_name)
 	return room_read;
 }
 
-map& file_reader::read_map(map& map_read, std::string folder)
+map& file_reader::read_map(map& map_read, const char* folder)
 {
-	// ignore following error, program compiles with it, becuase everything is correct. Some problem with intellisense on vscode
-	for (auto & entry : std::filesystem::directory_iterator(folder)) 
-	{
-		std::cout << entry.path() << std::endl; 
-		room new_room;
-		new_room = read_room(new_room, (entry.path()));
-		map_read.map_array[new_room.coord[0]][new_room.coord[1]][new_room.coord[2]] = new_room;
+	DIR *dir;
+	struct dirent *ent;
+	if ((dir = opendir(folder)) != NULL) {
+  		/* print all the files and directories within directory */
+  		while ((ent = readdir (dir)) != NULL) {
+			std::cout << ent->d_name << std::endl; 
+			room new_room;
+			new_room = read_room(new_room, ent->d_name);
+			map_read.map_array[new_room.coord[0]][new_room.coord[1]][new_room.coord[2]] = new_room;
+  		}
+  	closedir (dir);
+	} else {
+  		/* could not open directory */
+  		
+  		
 	}
+            
+    
 	return map_read;
 }
