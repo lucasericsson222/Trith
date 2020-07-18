@@ -3,7 +3,7 @@
 #include "file_reader.hpp"
 #include "map.hpp"
 
-int main() 
+int main()
 {
 	file_reader reader;
 	room new_room;
