@@ -3,13 +3,12 @@
 
 #include <string>
 
-using namespace std;
 class room
 {
 public:
 	int id = 0;
-	string name = "default_name";
-	string description = "default_description \n";
+	std::string name = "default_name";
+	std::string description = "default_description \n";
 	int coord[3] = {0,0,0};
 	void print_description();
 	

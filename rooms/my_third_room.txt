@@ -1,0 +1,7 @@
+Critmon Pit
+###
+Heres another example to help with loading
+of the maps. I hope it isn't too crazy slow.
+Lets see what happens.
+###
+19 9 4

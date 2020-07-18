@@ -1,12 +1,11 @@
 #include "room.hpp"
 #include <iostream>
-using namespace std;
 
 void room::print_description(){
-    cout << name << endl << endl;
-    cout << description << endl;
+    std::cout << name << std::endl << std::endl;
+    std::cout << description << std::endl;
     for(int i = 0; i < 3; i++) {
-        cout << coord[i] << " ";
+        std::cout << coord[i] << " ";
     }
-    cout << endl << endl;
+    std::cout << std::endl << std::endl;
 }

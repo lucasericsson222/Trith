@@ -1,0 +1,7 @@
+The Second Throne
+###
+Isn't this a cool room. Its mostly test the loading of all the room files
+into a map.
+Hopefully this works well.
+###
+18 9 4
