@@ -11,7 +11,7 @@ int main()
 	new_room.print_description();
 	map world1;
 	(world1.map_array[3][3][7]).print_description();
-	reader.read_map(world1, "~/Trith/rooms");
+	reader.read_map(world1, "rooms");
 	world1.display_map(9);
 
 }

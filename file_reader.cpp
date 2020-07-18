@@ -54,7 +54,7 @@ map& file_reader::read_map(map& map_read, const char* folder)
   	closedir (dir);
 	} else {
   		/* could not open directory */
-  		
+  		std::cout << "ERROR!";
   		
 	}
             
