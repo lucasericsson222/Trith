@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <dirent.h>
+#include <cstring>
 #ifdef WINDOWS
 #include <direct.h>
 #define GetCurrentDir _getcwd
@@ -15,6 +16,7 @@ room& file_reader::read_room(room& room_read, std::string file_name)
 {
 	std::ifstream room_file;
 	room_file.open(file_name);
+	std::cout << file_name << " room_read()" << std::endl ;
 	int section = 0;
 	room_read.description = "";
 	room_read.name = "";
@@ -48,17 +50,21 @@ room& file_reader::read_room(room& room_read, std::string file_name)
 
 map& file_reader::read_map(map& map_read, std::string folder)
 {
-	folder = get_current_dir() + folder;
+	std::string directory = get_current_dir() + "/" + folder;
 	DIR *dir;
 	struct dirent *ent;
-	std::cout << folder;
-	if ((dir = opendir(folder.c_str())) != NULL) {
+	std::cout << folder << std::endl;
+	if ((dir = opendir(directory.c_str())) != NULL) {
   		/* print all the files and directories within directory */
   		while ((ent = readdir (dir)) != NULL) {
-			std::cout << ent->d_name << std::endl;
-			room new_room;
-			new_room = read_room(new_room, ent->d_name);
-			map_read.map_array[new_room.coord[0]][new_room.coord[1]][new_room.coord[2]] = new_room;
+			if(ent->d_name[0] == '.') {
+			
+			}else {
+				std::cout << folder << "/" << ent->d_name << std::endl;
+				room new_room;
+				new_room = read_room(new_room, folder + "/" + std::string(ent->d_name));
+				map_read.map_array[new_room.coord[0]][new_room.coord[1]][new_room.coord[2]] = new_room;
+			}
   		}
   	closedir (dir);
 	} else {
