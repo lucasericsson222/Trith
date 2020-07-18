@@ -1,0 +1,8 @@
+Red Carpet Fountain
+###
+This is a great place to be testing things
+each of these dividers seperate different parts
+of this room object.
+For example, this is the description, and the above part
+seperated by the hashes is the name. Past these next hashes
+there will be more stuff, like coordinates

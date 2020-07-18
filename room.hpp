@@ -6,6 +6,7 @@
 using namespace std;
 class room
 {
+public:
 	int id = 0;
 	string name = "";
 	string description = "";
