@@ -8,9 +8,9 @@ class room
 {
 public:
 	int id = 0;
-	string name = "";
-	string description = "";
-
+	string name = "default_name";
+	string description = "default_description \n";
+	int coord[3] = {0,0,0};
 	void print_description();
 	
 };
