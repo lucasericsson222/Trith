@@ -1,8 +1,16 @@
+#ifndef ROOM_H
+#define ROOM_H
+
 #include <string>
 
+using namespace std;
 class room
 {
 	int id = 0;
-	string name = ""
+	string name = "";
+	string description = "";
+
+	void print_description();
 	
-}
+};
+#endif
