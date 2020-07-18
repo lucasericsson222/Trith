@@ -10,9 +10,10 @@ class file_reader
 {
 public:
 	room& read_room(room& room_read, std::string file_name);
-	map& read_map(map& map_read, const char* folder);
+	map& read_map(map& map_read, std::string folder);
+	
 };
-
+std::string get_current_dir();
 
 
 #endif

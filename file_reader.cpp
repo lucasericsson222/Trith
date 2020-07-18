@@ -3,6 +3,13 @@
 #include <iostream>
 #include <sstream>
 #include <dirent.h>
+#ifdef WINDOWS
+#include <direct.h>
+#define GetCurrentDir _getcwd
+#else
+#include <unistd.h>
+#define GetCurrentDir getcwd
+#endif
 
 room& file_reader::read_room(room& room_read, std::string file_name)
 {
@@ -39,11 +46,13 @@ room& file_reader::read_room(room& room_read, std::string file_name)
 	return room_read;
 }
 
-map& file_reader::read_map(map& map_read, const char* folder)
+map& file_reader::read_map(map& map_read, std::string folder)
 {
+	folder = get_current_dir() + folder;
 	DIR *dir;
 	struct dirent *ent;
-	if ((dir = opendir(folder)) != NULL) {
+	std::cout << folder;
+	if ((dir = opendir(folder.c_str())) != NULL) {
   		/* print all the files and directories within directory */
   		while ((ent = readdir (dir)) != NULL) {
 			std::cout << ent->d_name << std::endl; 
@@ -54,10 +63,17 @@ map& file_reader::read_map(map& map_read, const char* folder)
   	closedir (dir);
 	} else {
   		/* could not open directory */
-  		
+  		std::cout << "ERROR" << std::endl;
   		
 	}
             
     
 	return map_read;
+}
+
+std::string get_current_dir() {
+   char buff[FILENAME_MAX]; //create string buffer to hold path
+   GetCurrentDir( buff, FILENAME_MAX );
+   std::string current_working_dir(buff);
+   return current_working_dir;
 }
