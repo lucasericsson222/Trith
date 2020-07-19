@@ -1,3 +1,5 @@
+2
+###
 The Second Throne
 ###
 Isn't this a cool room. Its mostly test the loading of all the room files

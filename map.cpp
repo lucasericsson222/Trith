@@ -8,7 +8,11 @@ map::map()
         {
             for (int z = 0; z < map::Z_SIZE; ++z)
             {
-                map_array[x][y][z] = room();
+                room coord_room;
+                coord_room.coord[0] = x;
+                coord_room.coord[1] = y;
+                coord_room.coord[2] = z;
+                map_array[x][y][z] = coord_room;
             }
         }
     }
