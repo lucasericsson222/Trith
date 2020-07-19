@@ -5,6 +5,7 @@
 
 int main()
 {
+	
 	file_reader reader;
 	room new_room;
 	reader.read_room(new_room, "rooms/my_first_room.txt");
@@ -13,5 +14,4 @@ int main()
 	(world1.map_array[3][3][7]).print_description();
 	reader.read_map(world1, "rooms");
 	world1.display_map(9);
-
 }

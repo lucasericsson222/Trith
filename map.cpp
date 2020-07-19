@@ -26,10 +26,10 @@ void map::display_map(int y)
         {
             if (map_array[x][y][z].name == "default_name")
             {
-                std::cout << "=";
+                std::cout << "  ";
             } else
             {
-                std::cout << "*";
+                std::cout << " ▉";
             }
         }
         std::cout << std::endl;
